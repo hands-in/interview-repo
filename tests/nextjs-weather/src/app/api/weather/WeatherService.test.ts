@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it } from "@jest/globals";
-import { WeatherService } from "../../../__test_data__/WeatherService";
-import {DefaultWeatherService } from "./DefaultWeatherService";
+import { WeatherService, WeatherData } from "../../../__test_data__/WeatherService";
+import { DefaultWeatherService } from "./DefaultWeatherService";
 
-describe("WeatherService", () => {
+describe("WeatherService Unit Tests", () => {
 	let weatherService: WeatherService;
 
 	beforeEach(() => {
@@ -25,65 +25,19 @@ describe("WeatherService", () => {
 			expect(result.at(0)?.date).toBe("2025-07-31");
 		});
 
-		it("should return latest weather when no date specified", () => {
-			expect(false).toBe(true); // TODO: Implement
-		});
-
 		it("should return empty array for non-existent country", () => {
-			expect(false).toBe(true); // TODO: Implement
-		});
-
-		it("should be case insensitive for country names", () => {
-			expect(false).toBe(true); // TODO: Implement
+			expect(false).toBe(true); // TODO: Implement this test
 		});
 	});
 
 	describe("updateWeather", () => {
 		it("should update weather for a specific date and location", () => {
-			expect(false).toBe(true); // TODO: Implement
+			expect(false).toBe(true); // TODO: Implement this test
 		});
 
 		it("should validate weather data before updating", () => {
-			expect(false).toBe(true); // TODO: Implement
+			expect(false).toBe(true); // TODO: Implement this test
 		});
 	});
 });
 
-describe("Weather API Routes", () => {
-	describe("GET /api/weather", () => {
-		it("should return 400 when country parameter is missing", async () => {
-			const response = await fetch("/api/weather");
-			expect(response.status).toBe(400);
-		});
-
-		it("should return weather data for valid country", async () => {
-			expect(false).toBe(true); // TODO: Implement
-		});
-
-		it("should return specific city weather when city parameter provided", async () => {
-			expect(false).toBe(true); // TODO: Implement
-		});
-
-		it("should return 404 for non-existent country", async () => {
-			expect(false).toBe(true); // TODO: Implement
-		});
-
-		it("should handle date parameter correctly", async () => {
-			expect(false).toBe(true); // TODO: Implement
-		});
-	});
-
-	describe("POST /api/weather", () => {
-		it("should successfully update weather with valid data", async () => {
-			expect(false).toBe(true); // TODO: Implement
-		});
-
-		it("should return 400 for invalid weather data", async () => {
-			expect(false).toBe(true); // TODO: Implement
-		});
-
-		it("should return 400 for missing required fields", async () => {
-			expect(false).toBe(true); // TODO: Implement
-		});
-	});
-});

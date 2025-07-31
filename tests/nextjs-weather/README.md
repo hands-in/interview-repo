@@ -34,6 +34,124 @@ nx test weather --watch
 
 The application will be available at `http://localhost:3000`.
 
+## � What's Provided vs What You Need to Implement
+
+### ✅ Already Provided (Ready to Use)
+
+#### Frontend Pages
+- **[`src/app/page.tsx`](src/app/page.tsx)** - Landing page with navigation to demo pages
+- **[`src/app/weather/get/page.tsx`](src/app/weather/get/page.tsx)** - Complete weather display page
+  - ✅ Country/city selection form
+  - ✅ API integration for GET requests
+  - ✅ Weather data display components
+  - ✅ Error handling and loading states
+  - ✅ Responsive design
+
+#### Backend Structure
+- **[`src/app/api/WeatherService.ts`](src/app/api/WeatherService.ts)** - Complete interface definition
+  - ✅ WeatherService interface with method signatures
+  - ✅ WeatherData type definition
+  - ✅ Weather enum with all weather types
+  - ✅ Clear documentation of expected behavior
+
+- **[`src/app/api/weatherData.ts`](src/app/api/weatherData.ts)** - Complete sample data
+  - ✅ 22 weather entries across 10 countries
+  - ✅ Helper functions for data filtering
+  - ✅ Realistic weather data with all required fields
+
+#### Testing Framework
+- **[`src/app/api/WeatherService.test.ts`](src/app/api/WeatherService.test.ts)** - Test structure with examples
+  - ✅ Test suite organization with describe blocks
+  - ✅ Test case names that define expected behavior
+  - ✅ One example test implementation to guide your approach
+  - ✅ Placeholder tests covering all major functionality
+
+#### Configuration
+- ✅ Next.js 15 setup with App Router
+- ✅ TypeScript configuration with strict mode
+- ✅ Tailwind CSS styling framework
+- ✅ Jest testing configuration
+- ✅ Nx workspace integration
+
+### 🚧 What You Need to Implement
+
+#### 1. Weather Service Class
+**File: Create your implementation (suggested: `src/app/api/WeatherServiceImpl.ts`)**
+- [ ] Create a class that implements the `WeatherService` interface
+- [ ] Implement `getWeather(params: { country: string; city?: string; date?: Date }): WeatherData[]`
+  - [ ] Return all cities when no city specified
+  - [ ] Return latest data when no date specified
+  - [ ] Handle case-insensitive country/city matching
+- [ ] Implement `updateWeather(date: Date, weather: WeatherData): void`
+  - [ ] Add new weather data or update existing entries
+  - [ ] Validate input data before updating
+
+#### 2. Test Implementation
+**File: [`src/app/api/WeatherService.test.ts`](src/app/api/WeatherService.test.ts)** (Structure provided)
+- [ ] Replace placeholder tests with actual implementations
+- [ ] Test your WeatherService class methods
+
+#### 3. API Endpoints
+**File: [`src/app/api/route.ts`](src/app/api/route.ts)** (Currently has placeholder implementation)
+- [ ] **POST `/api/weather`** endpoint
+  - [ ] Parse and validate request body (WeatherData object)
+  - [ ] Use your WeatherService to update data
+  - [ ] Return success/error responses with appropriate status codes
+  - [ ] Test API endpoint behavior (GET and POST)
+
+#### 4. Update Weather Form Integration
+**File: [`src/app/weather/update/page.tsx`](src/app/weather/update/page.tsx)** (50% complete)
+- [ ] Complete the `handleSubmit` function
+  - [ ] Create WeatherData object from form state
+  - [ ] Send POST request to `/api/weather`
+  - [ ] Handle response and update UI state (success/error)
+  - [ ] Reset form on successful submission
+
+
+### 📋 Implementation Checklist
+
+#### Backend (Priority 1)
+- [ ] Create WeatherService implementation class
+- [ ] Implement POST `/api/weather` endpoint with data validation
+- [ ] Add proper error handling and HTTP status codes
+
+#### Testing (Priority 2)
+- [ ] Implement unit tests for your WeatherService methods
+- [ ] Test error scenarios and edge cases
+- [ ] Verify test coverage of core functionality
+
+#### Frontend Integration (Priority 3)  
+- [ ] Complete the update weather form submission logic
+- [ ] Test the weather display page with your GET endpoint
+- [ ] Ensure proper error handling in the UI
+
+
+## �📱 Demo Pages
+
+The test includes two demo pages to help you test and implement your solution:
+
+### 1. Weather Display Page (`/weather/get`)
+- **Status**: ✅ Ready to use
+- **Purpose**: Test your GET endpoint implementation
+- **Features**: 
+  - Country and city selection
+  - Displays weather data from your API
+  - Error handling and loading states
+  - Already connected to `/api/weather`
+
+### 2. Update Weather Page (`/weather/update`)
+- **Status**: 🚧 50% Complete
+- **Purpose**: Implement POST endpoint functionality
+- **What's Done**:
+  - Complete form UI with all weather fields
+  - Form validation and state management
+  - Error and success messaging
+  - Responsive design
+- **What You Need to Do**:
+  - Implement the API call in the form submission
+  - Handle the response properly
+  - Ensure your POST endpoint accepts the data format
+
 ## 📋 Project Requirements
 
 ### Core Functionality
@@ -78,12 +196,18 @@ nextjs-weather/
 ├── src/
 │   └── app/
 │       ├── layout.tsx                    # Root layout
-│       ├── page.tsx                      # Main weather page (provided)
+│       ├── page.tsx                      # Main weather page (starter code)
 │       ├── not-found.tsx                 # 404 page
-│       └── api/weather
+│       ├── weather/
+│       │   ├── get/
+│       │   │   └── page.tsx              # Weather display page (ready to test GET endpoint)
+│       │   └── update/
+│       │       └── page.tsx              # Weather update page (50% complete - implement POST)
+│       └── api/
 │           ├── route.ts                  # API endpoints (implement)
-│           ├── DefaultWeatherService.ts  # Class interface (implement)
+│           ├── WeatherService.ts         # Service interface (provided)
 │           ├── WeatherService.test.ts    # Test suite (implement)
+│           └── weatherData.ts            # Sample data (provided)
 ├── package.json
 ├── project.json                          # Nx configuration
 ├── jest.config.ts                        # Jest configuration
@@ -149,47 +273,27 @@ The test includes comprehensive sample weather data for multiple countries and c
 - HAIL: Hailstorms and severe weather
 - SNOW: Snow and winter conditions
 
-## 🎯 Implementation Tasks
+## 🎯 Implementation Approach
 
-### Phase 1: Backend Development (TDD Focus)
-- [ ] **WeatherService Implementation**
-  - [ ] Implement `getWeather(params: { country: string; city?: string; date?: Date }): WeatherData[]`
-  - [ ] Implement `updateWeather(date: Date, weather: WeatherData): void`
-  - [ ] Handle case-insensitive country/city matching
-  - [ ] Return latest data when no date specified
-  - [ ] Return all cities when no city specified
+### Recommended Order
+1. **Start with Backend** - Implement WeatherService class and API endpoints
+2. **Test as You Go** - Use the provided tests to guide your implementation
+3. **Complete Frontend** - Finish the update weather form integration
+4. **Refine and Test** - Add error handling and edge case coverage
 
-- [ ] **API Routes Implementation**
-  - [ ] GET `/api/weather?country=<name>` - Get all cities in a country
-  - [ ] GET `/api/weather?country=<name>&city=<name>` - Get specific city weather
-  - [ ] GET `/api/weather?country=<name>&date=<date>` - Get weather for specific date
-  - [ ] POST `/api/weather` - Update weather data
-  - [ ] Implement proper HTTP status codes (200, 400, 404, 500)
-  - [ ] Add request validation and error handling
+### Phase 1: Core Backend (Essential)
+- Implement WeatherService class with getWeather and updateWeather methods
+- Complete GET and POST API endpoints in `route.ts`
+- Ensure proper error handling and validation
 
-### Phase 2: Frontend Development
-- [ ] **Weather Display Components**
-  - [ ] Country selection/search interface
-  - [ ] Weather data display with proper styling
-  - [ ] City-specific weather detail view
-  - [ ] Loading states and error boundaries
+### Phase 2: Frontend Integration (Essential)
+- Complete the update weather form submission in `weather/update/page.tsx`
+- Test both demo pages work with your API implementation
 
-- [ ] **User Experience**
-  - [ ] Responsive design for mobile and desktop
-  - [ ] Proper accessibility (ARIA labels, keyboard navigation)
-  - [ ] Intuitive navigation and user flow
-  - [ ] Error messages and user feedback
-
-### Phase 3: Testing and Quality
-- [ ] **Test Coverage**
-  - [ ] Unit tests for WeatherService methods
-  - [ ] Integration tests for API endpoints
-  - [ ] Error handling and edge case tests
-
-- [ ] **Code Quality**
-  - [ ] TypeScript strict mode compliance
-  - [ ] Clean code principles
-  - [ ] Proper documentation and comments
+### Phase 3: Testing & Quality (Essential)
+- Implement the test cases in `WeatherService.test.ts`
+- Add error handling tests
+- Ensure code quality and TypeScript compliance
 
 ## 🧪 Testing Strategy
 
@@ -322,140 +426,3 @@ You're on the right track if:
 ---
 
 **Good luck!** Remember, we're evaluating your problem-solving process, code quality, and testing approach as much as the final product. Take your time to write clean, well-tested code that demonstrates your best practices.
-
-## 🎯 Implementation Tasks
-
-### 1. Frontend Development (page.tsx)
-- [ ] Create a form to input location/city name
-- [ ] Display weather information in a visually appealing format
-- [ ] Implement loading states and error handling
-- [ ] Make the UI responsive and accessible
-- [ ] Add proper TypeScript types for your components
-
-### 2. API Development (route.ts)
-- [ ] Implement the GET endpoint to fetch weather data
-- [ ] Implement the POST endpoint to update weather data
-- [ ] Add proper request validation
-- [ ] Implement error handling with appropriate HTTP status codes
-- [ ] Return data in the `ExampleWeatherData` format
-
-### 3. Weather Service Implementation
-- [ ] Create a class that implements `WeatherPredictorService`
-- [ ] Implement `getWeather(date: Date): Weather` method
-- [ ] Implement `updateWeather(date: Date, weather: Weather): void` method
-- [ ] Add proper data persistence (in-memory is acceptable)
-- [ ] Handle edge cases and invalid inputs
-
-### 4. Testing (WeatherService.test.ts)
-- [ ] Write tests for the weather API endpoints
-- [ ] Test both successful responses and error cases
-- [ ] Test the WeatherPredictorService implementation
-- [ ] Achieve good test coverage
-- [ ] Use proper Jest testing patterns
-
-### 5. Optional Enhancements
-- [ ] Integrate with a real weather API (OpenWeatherMap, etc.)
-- [ ] Add weather forecasting for multiple days
-- [ ] Implement data caching
-- [ ] Add weather history tracking
-- [ ] Include weather-based UI themes
-
-## 📊 Evaluation Criteria
-
-### Technical Implementation (40%)
-- **Code Quality**: Clean, readable, and maintainable code
-- **TypeScript Usage**: Proper type definitions and type safety
-- **Architecture**: Well-structured components and services
-- **Best Practices**: Following React/Next.js conventions
-
-### API Design (25%)
-- **RESTful Design**: Proper HTTP methods and status codes
-- **Error Handling**: Comprehensive error responses
-- **Validation**: Input validation and sanitization
-- **Documentation**: Clear API interface
-
-### Testing (20%)
-- **Test Coverage**: Comprehensive test suite
-- **Test Quality**: Meaningful and well-structured tests
-- **Edge Cases**: Testing error conditions and edge cases
-- **Testing Best Practices**: Following Jest conventions
-
-### User Experience (15%)
-- **Interface Design**: Clean and intuitive UI
-- **Responsiveness**: Works well on different screen sizes
-- **Accessibility**: Proper ARIA labels and keyboard navigation
-- **Performance**: Efficient rendering and data fetching
-
-## 💡 Implementation Tips
-
-### Getting Started
-1. Start with the API implementation (`route.ts` and `WeatherService.ts`)
-2. Write tests as you implement features
-3. Build the frontend to consume your API
-4. Iterate and improve based on testing
-
-### Best Practices
-- Use TypeScript interfaces for all data structures
-- Implement proper error boundaries in React
-- Add loading states for better UX
-- Use semantic HTML elements
-- Follow accessibility guidelines
-
-### Common Pitfalls to Avoid
-- Don't skip error handling
-- Don't forget to validate API inputs
-- Don't neglect responsive design
-- Don't write tests as an afterthought
-
-## 🔧 Available Commands
-
-```bash
-# Development
-pnpm dev              # Start development server
-pnpm build            # Build for production
-pnpm start            # Start production server
-
-# Testing
-pnpm test             # Run Jest tests
-pnpm test:watch       # Run tests in watch mode
-pnpm test:coverage    # Run tests with coverage report
-
-# Code Quality
-pnpm lint             # Run ESLint
-pnpm typecheck        # Run TypeScript compiler check
-```
-
-## 🌟 Bonus Points
-
-Implementing any of these will demonstrate advanced skills:
-
-- **Performance Optimization**: Implement caching, memoization, or other optimizations
-- **Real API Integration**: Connect to a live weather service
-- **Advanced UI**: Animations, micro-interactions, or advanced layouts
-- **State Management**: Use React Context or external state management
-- **Progressive Enhancement**: Offline support or service workers
-- **Monitoring**: Error tracking or performance monitoring
-
-## ❓ Frequently Asked Questions
-
-**Q: Can I use external libraries?**
-A: Yes, but justify your choices. Prefer built-in solutions when possible.
-
-**Q: Should I implement real weather API integration?**
-A: Optional. Focus on the core requirements first, then enhance if time permits.
-
-**Q: How detailed should my tests be?**
-A: Cover the main functionality and edge cases. Aim for meaningful tests over 100% coverage.
-
-**Q: What if I don't finish everything?**
-A: Prioritize core functionality and code quality over feature completeness.
-
-## 📞 Need Help?
-
-- **Environment Issues**: Ask your interviewer for assistance
-- **Requirement Clarification**: Questions about requirements are encouraged
-- **Technical Guidance**: Focus on implementation approach, not specific solutions
-
----
-
-**Good luck!** Remember to focus on code quality, testing, and clear communication of your approach.

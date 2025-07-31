@@ -52,6 +52,31 @@ export default function WeatherPage() {
 					</div>
 				</div>
 
+				{/* Demo Pages Navigation */}
+				<div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+					<a
+						href="/weather/get"
+						className="bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-lg p-6 text-white transition-colors border border-white/20"
+					>
+						<div className="text-2xl mb-2">🌤️</div>
+						<h3 className="text-lg font-semibold mb-2">View Weather</h3>
+						<p className="text-sm text-white/80">
+							Test your GET endpoint implementation. This page is already set up to call your API.
+						</p>
+					</a>
+
+					<a
+						href="/weather/update"
+						className="bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-lg p-6 text-white transition-colors border border-white/20"
+					>
+						<div className="text-2xl mb-2">📝</div>
+						<h3 className="text-lg font-semibold mb-2">Update Weather</h3>
+						<p className="text-sm text-white/80">
+							Complete the POST endpoint implementation. Form is 50% done - you need to finish it.
+						</p>
+					</a>
+				</div>
+
 				<div className="mt-8 text-center text-white/70">
 					<p className="text-sm">
 						💡 <strong>Tip:</strong> Use the sample data provided in <code>weatherData.ts</code> for your implementation.
