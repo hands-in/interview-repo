@@ -1,6 +1,8 @@
 {
 	"name": "Hands In Interview",
-	"image": "mcr.microsoft.com/devcontainers/base:alpine-3.20",
+	"build":{
+		"dockerfile": "Dockerfile"
+	},
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"installZsh": "true",
@@ -21,5 +23,6 @@
 			]
 		}
 	},
-	"postCreateCommand": "pnpm i -g nx"
+	"postCreateCommand": "sh .devcontainer/post-setup.sh",
+	"remoteUser": "node"
 }
