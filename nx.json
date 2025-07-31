@@ -77,16 +77,6 @@
 				"generate",
 				"watch-deps"
 			]
-		},
-		"deploy": {
-			"dependsOn": [
-				"build"
-			]
-		},
-		"e2e-ci--**/*": {
-			"dependsOn": [
-				"^export"
-			]
 		}
 	},
 	"plugins": [
@@ -146,22 +136,6 @@
 			}
 		},
 		{
-			"plugin": "@nx/expo/plugin",
-			"options": {
-				"startTargetName": "start",
-				"buildTargetName": "build",
-				"prebuildTargetName": "prebuild",
-				"serveTargetName": "dev",
-				"installTargetName": "install",
-				"exportTargetName": "export",
-				"submitTargetName": "submit",
-				"runIosTargetName": "run-ios",
-				"runAndroidTargetName": "run-android",
-				"buildDepsTargetName": "build-deps",
-				"watchDepsTargetName": "watch-deps"
-			}
-		},
-		{
 			"plugin": "@nx/next/plugin",
 			"options": {
 				"startTargetName": "start",
@@ -171,36 +145,6 @@
 				"buildDepsTargetName": "build-deps",
 				"watchDepsTargetName": "watch-deps"
 			}
-		},
-		{
-			"plugin": "@nx/react/router-plugin",
-			"options": {
-				"buildTargetName": "build",
-				"devTargetName": "dev",
-				"startTargetName": "start",
-				"watchDepsTargetName": "watch-deps",
-				"buildDepsTargetName": "build-deps",
-				"typecheckTargetName": "typecheck"
-			}
-		},
-		{
-			"plugin": "@nx/rspack/plugin",
-			"options": {
-				"buildTargetName": "build",
-				"serveTargetName": "dev",
-				"previewTargetName": "preview",
-				"buildDepsTargetName": "build-deps",
-				"watchDepsTargetName": "watch-deps",
-				"serveStaticTargetName": "serve-static"
-			}
 		}
-	],
-	"release": {
-		"projects": [
-			"packages/*"
-		],
-		"version": {
-			"conventionalCommits": true
-		}
-	}
+	]
 }
