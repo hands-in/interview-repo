@@ -1,22 +1,5 @@
-export interface WeatherData {
-  country: string;
-  city: string;
-  temperature: number;
-  description: string;
-  humidity: number;
-  windSpeed: number;
-  icon: string;
-  date: string;
-  weather: Weather;
-}
+import { Weather, WeatherData } from "./WeatherService";
 
-export enum Weather {
-  SUNNY = "SUNNY",
-  RAINY = "RAINY", 
-  CLOUDY = "CLOUDY",
-  HAIL = "HAIL",
-  SNOW = "SNOW",
-}
 
 /**
  * Sample weather data for testing purposes

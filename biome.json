@@ -42,12 +42,6 @@
 			"recommended": true
 		}
 	},
-	"assist": {
-		"enabled": true,
-		"actions": {
-			"source": { "organizeImports": "on", "useSortedAttributes": "on" }
-		}
-	},
 	"vcs": {
 		"clientKind": "git",
 		"enabled": true,

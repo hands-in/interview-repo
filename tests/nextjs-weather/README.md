@@ -78,13 +78,12 @@ nextjs-weather/
 ├── src/
 │   └── app/
 │       ├── layout.tsx                    # Root layout
-│       ├── page.tsx                      # Main weather page (implement)
+│       ├── page.tsx                      # Main weather page (provided)
 │       ├── not-found.tsx                 # 404 page
-│       └── api/
+│       └── api/weather
 │           ├── route.ts                  # API endpoints (implement)
-│           ├── WeatherService.ts         # Service interface (provided)
+│           ├── DefaultWeatherService.ts  # Class interface (implement)
 │           ├── WeatherService.test.ts    # Test suite (implement)
-│           └── weatherData.ts            # Sample data (provided)
 ├── package.json
 ├── project.json                          # Nx configuration
 ├── jest.config.ts                        # Jest configuration

@@ -1,21 +1,21 @@
-export enum Weather {
-	SUNNY = "SUNNY",
-	RAINY = "RAINY",
-	CLOUDY = "CLOUDY",
-	HAIL = "HAIL",
-	SNOW = "SNOW",
+export interface WeatherData {
+  country: string;
+  city: string;
+  temperature: number;
+  description: string;
+  humidity: number;
+  windSpeed: number;
+  icon: string;
+  date: string;
+  weather: Weather;
 }
 
-export interface WeatherData {
-	country: string;
-	city: string;
-	temperature: number;
-	description: string;
-	humidity: number;
-	windSpeed: number;
-	icon: string;
-	date: string;
-	weather: Weather;
+export enum Weather {
+  SUNNY = "SUNNY",
+  RAINY = "RAINY", 
+  CLOUDY = "CLOUDY",
+  HAIL = "HAIL",
+  SNOW = "SNOW",
 }
 
 /**
