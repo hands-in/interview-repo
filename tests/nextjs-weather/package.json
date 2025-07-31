@@ -1,0 +1,9 @@
+{
+	"name": "website",
+	"private": true,
+	"scripts": {
+		"clean": "rimraf out-tsc node_modules .next .open-next .sst"
+	},
+	"type": "module",
+	"version": "0.0.1"
+}

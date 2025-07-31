@@ -5,17 +5,5 @@
 	"files": [], // intentionally empty
 	"include": [],
 	"references": [
-    {
-      "path": "./apps/website-e2e"
-    },
-    {
-      "path": "./apps/api-e2e"
-    },
-    {
-      "path": "./apps/website"
-    },
-    {
-      "path": "./apps/api"
-    }
   ]
 }

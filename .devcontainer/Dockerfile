@@ -4,3 +4,5 @@ FROM node:22-bookworm
 ENV PNPM_HOME="/workspaces/.pnpm-global"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable 
+
+ENV NX_DAEMON="true"

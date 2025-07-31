@@ -1,6 +1,6 @@
 {
 	"$schema": "node_modules/nx/schemas/nx-schema.json",
-	"tui": {"autoExit": true},
+	"tui": {"enabled": false},
 	"namedInputs": {
 		"default": [
 			"{projectRoot}/**",

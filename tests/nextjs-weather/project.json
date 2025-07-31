@@ -2,6 +2,6 @@
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
 	"name": "weather",
 	"projectType": "application",
-	"root": "apps/fullstack-nextjs-weather",
+	"root": "tests/nextjs-weather",
 	"targets": {}
 }
