@@ -26,10 +26,6 @@
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
 
-# Mobile specific directories
-apps/mobile/android
-apps/mobile/ios
-
 # Logs
 logs
 *.log

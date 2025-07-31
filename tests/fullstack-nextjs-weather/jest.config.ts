@@ -1,8 +1,8 @@
 import type { Config } from "jest";
 
 export default {
-	displayName: "api",
-	coverageDirectory: "../../coverage/apps/api",
+	displayName: "fullstack-nextjs-weather",
+	coverageDirectory: "../../coverage/apps/fullstack-nextjs-weather",
 	preset: "../../jest.preset.js",
 	moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
 } satisfies Config;

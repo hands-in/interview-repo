@@ -2,7 +2,7 @@
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["**/packages/**", "**/apps/**"]
+		"includes": ["**/packages/**", "**/tests/**"]
 	},
 	"formatter": {
 		"attributePosition": "auto",
@@ -17,6 +17,9 @@
 		"formatter": {
 			"lineWidth": 120,
 			"quoteStyle": "double"
+		},
+		"parser": {
+			"unsafeParameterDecoratorsEnabled": true
 		}
 	},
 	"json": {
@@ -30,6 +33,12 @@
 			"complexity": {
 				"useLiteralKeys": "off"
 			},
+			"correctness": {
+				"useExhaustiveDependencies": "warn"
+			},
+			"style": {
+				"useImportType": "off"
+			},
 			"recommended": true
 		}
 	},
@@ -39,33 +48,6 @@
 			"source": { "organizeImports": "on", "useSortedAttributes": "on" }
 		}
 	},
-	"overrides": [
-		{
-			"includes": ["**/apps/website/**"],
-			"linter": {
-				"rules": {
-					"correctness": {
-						"useExhaustiveDependencies": "warn"
-					}
-				}
-			}
-		},
-		{
-			"includes": ["**/apps/api/**"],
-			"javascript": {
-				"parser": {
-					"unsafeParameterDecoratorsEnabled": true
-				}
-			},
-			"linter": {
-				"rules": {
-					"style": {
-						"useImportType": "off"
-					}
-				}
-			}
-		}
-	],
 	"vcs": {
 		"clientKind": "git",
 		"enabled": true,

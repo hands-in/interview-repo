@@ -13,8 +13,6 @@ const nextConfig = {
 	outputFileTracingRoot: join(__dirname, "../../"),
 	outputFileTracingExcludes: {
 		"*": [
-			"node_modules/@bufbuild",
-			"node_modules/@rspack",
 			"node_modules/@esbuild",
 			"node_modules/esbuild",
 			"node_modules/webpack",
@@ -27,7 +25,6 @@ const nextConfig = {
 		remotePatterns: [
 			{ hostname: "localhost" },
 			{ hostname: "127.0.0.1" },
-			{ hostname: "staging-rstack-static-bucket.s3.amazonaws.com" },
 		],
 	},
 	typescript: {
