@@ -1,0 +1,25 @@
+{
+	"name": "Hands In Interview",
+	"image": "mcr.microsoft.com/devcontainers/base:alpine-3.20",
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": "true",
+			"configureZshAsDefaultShell": "true",
+			"installOhMyZsh": "true",
+			"installOhMyZshConfig": "true",
+			"username": "node",
+			"upgradePackages": "true"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"streetsidesoftware.code-spell-checker",
+				"bradlc.vscode-tailwindcss",
+				"mutantdino.resourcemonitor",
+				"biomejs.biome"
+			]
+		}
+	},
+	"postCreateCommand": "pnpm i -g nx"
+}

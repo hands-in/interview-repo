@@ -1,0 +1,15 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"module": "CommonJS",
+		"moduleResolution": "Node",
+		"noEmit": true,
+		"target": "ES2022",
+		"tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
+	},
+	"extends": "../../tsconfig.json",
+	"include": ["*.ts", "src"],
+	"references": []
+}

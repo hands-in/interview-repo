@@ -1,0 +1,16 @@
+pre-commit:
+  commands:
+    lint:
+      run: npx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      stage_fixed: true
+    typecheck:
+      run: npx nx affected -t typecheck --configuration=ci --files {staged_files}
+      interactive: true
+pre-push:
+  parallel: true
+  commands:
+    lint:
+      run: npx biome check --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {push_files}
+    test: 
+      run: npx nx affected -t test --configuration=ci --files {push_files}
+      interactive: true

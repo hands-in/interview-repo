@@ -1,0 +1,74 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"files": {
+		"ignoreUnknown": true,
+		"includes": ["**/packages/**", "**/apps/**"]
+	},
+	"formatter": {
+		"attributePosition": "auto",
+		"enabled": true,
+		"formatWithErrors": false,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"lineWidth": 80
+	},
+	"javascript": {
+		"formatter": {
+			"lineWidth": 120,
+			"quoteStyle": "double"
+		}
+	},
+	"json": {
+		"parser": {
+			"allowComments": true
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"complexity": {
+				"useLiteralKeys": "off"
+			},
+			"recommended": true
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": { "organizeImports": "on", "useSortedAttributes": "on" }
+		}
+	},
+	"overrides": [
+		{
+			"includes": ["**/apps/website/**"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"useExhaustiveDependencies": "warn"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["**/apps/api/**"],
+			"javascript": {
+				"parser": {
+					"unsafeParameterDecoratorsEnabled": true
+				}
+			},
+			"linter": {
+				"rules": {
+					"style": {
+						"useImportType": "off"
+					}
+				}
+			}
+		}
+	],
+	"vcs": {
+		"clientKind": "git",
+		"enabled": true,
+		"useIgnoreFile": true
+	}
+}

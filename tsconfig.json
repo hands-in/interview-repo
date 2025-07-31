@@ -1,0 +1,21 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "./tsconfig.base.json",
+	"compileOnSave": false,
+	"files": [], // intentionally empty
+	"include": [],
+	"references": [
+    {
+      "path": "./apps/website-e2e"
+    },
+    {
+      "path": "./apps/api-e2e"
+    },
+    {
+      "path": "./apps/website"
+    },
+    {
+      "path": "./apps/api"
+    }
+  ]
+}

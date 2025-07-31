@@ -1,0 +1,13 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"strictPropertyInitialization": false,
+		"outDir": "./out-tsc/app",
+		"target": "ES2022"
+	},
+	"exclude": ["sst.config.ts", "src/**/*.spec.*", "src/**/*.test.*"],
+	"include": ["*.ts", "src"],
+	"references": []
+}

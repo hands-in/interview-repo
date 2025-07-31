@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"module": "commonjs",
+		"moduleResolution": "node10",
+		"outDir": "./out-tsc/spec",
+		"strictPropertyInitialization": false,
+		"types": [
+			"vitest/globals",
+			"vitest/importMeta",
+			"vite/client",
+			"node",
+			"vitest"
+		]
+	},
+	"extends": "../../tsconfig.base.json",
+	"include": ["src/**/*.test.*", "src/**/*.spec.*"],
+	"references": [
+		{
+			"path": "./tsconfig.app.json"
+		}
+	]
+}
