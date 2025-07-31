@@ -2,7 +2,8 @@
 	"name": "website",
 	"private": true,
 	"scripts": {
-		"clean": "rimraf out-tsc node_modules .next .open-next .sst"
+		"clean": "rimraf out-tsc node_modules .next .open-next .sst",
+		"typecheck": "tsc --build --emitDeclarationOnly"
 	},
 	"type": "module",
 	"version": "0.0.1"
