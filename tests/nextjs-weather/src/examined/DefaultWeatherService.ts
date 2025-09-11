@@ -9,21 +9,7 @@ export class DefaultWeatherService implements WeatherService {
 		this.weatherData = [...SAMPLE_WEATHER_DATA]
 	}
 
-	/**
-	 * Updates weather data for a specific date and location.
-	 *
-	 * @param weather - The weather data object containing the updated information
-	 */
-	updateWeather(_weather: WeatherData): void {
-		// TODO: Implement this method
-		// Requirements:
-		// 1. Find existing entry with same country, city, and date
-		// 2. If found, update the existing entry
-		// 3. If not found, add new entry to the dataset
-		
-		throw new Error("updateWeather method not implemented");
-	}
-
+	
 	/**
 	 * Retrieves weather data based on the provided parameters.
 	 *
@@ -41,6 +27,23 @@ export class DefaultWeatherService implements WeatherService {
 	 * - City and date: Get weather for that city on that date
 	 */
 	getWeather(_query: WeatherQuery): WeatherData[] {
+		// TODO: Implement this method
+
 		throw new Error("getWeather method not implemented");
+	}
+
+	/**
+	 * Updates weather data for a specific date and location.
+	 *
+	 * @param weather - The weather data object containing the updated information
+	 * 
+	 * @remarks
+	 * - If an entry for the same country, city, and date exists, it should be updated.
+	 * - If no such entry exists, the new data should be added to the dataset.
+	 */
+	updateWeather(_weather: WeatherData): void {
+		// TODO: Implement this method
+		
+		throw new Error("updateWeather method not implemented");
 	}
 }
