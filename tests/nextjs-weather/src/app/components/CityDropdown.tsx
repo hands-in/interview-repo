@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
-import { getCitiesForCountry } from "../weather-data";
+import { getCitiesForCountry } from "../api/weather/weather-data";
 
 interface CityDropdownProps {
 	value: string;

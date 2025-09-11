@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { WeatherData, Weather } from "../__dont_touch__/WeatherService";
-import CountryDropdown from "../__dont_touch__/components/CountryDropdown";
-import CityDropdown from "../__dont_touch__/components/CityDropdown";
+import { WeatherData, Weather } from "./api/weather/WeatherService";
 import AddWeatherDataForm from "../examined/AddWeatherDataForm";
+import { CityDropdown, CountryDropdown } from "./components";
 
 export default function WeatherPage() {
 	// Display/Search state

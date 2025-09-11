@@ -1,4 +1,4 @@
-import { Weather, WeatherService } from "../../../__dont_touch__/WeatherService";
+import { Weather, WeatherService } from "./WeatherService";
 import { DefaultWeatherService } from "../../../examined/DefaultWeatherService";
 import { z } from "zod";
 import { type NextRequest, NextResponse } from "next/server";
@@ -61,7 +61,14 @@ export async function POST(request: NextRequest) {
 		if (!parseResult.success) {
 			return NextResponse.json({ error: "Invalid request body", details: parseResult.error.issues }, { status: 400 });
 		}
-		weatherService.updateWeather({ id: crypto.randomUUID(), ...parseResult.data });
+		
+		// Add ID if not provided
+		const weatherData = { 
+			id: crypto.randomUUID(), 
+			...parseResult.data 
+		};
+		
+		weatherService.updateWeather(weatherData);
 		return NextResponse.json({ success: true });
 	} catch {
 		return NextResponse.json({ error: "Invalid request body or server error" }, { status: 400 });
