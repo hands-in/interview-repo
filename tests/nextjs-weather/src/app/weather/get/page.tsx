@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { WeatherData } from "../../../__test_data__/WeatherService";
+import { WeatherData } from "../../../__dont_touch__/WeatherService";
 
 export default function WeatherPage() {
 	const [weatherData, setWeatherData] = useState<WeatherData[] | undefined>(undefined);

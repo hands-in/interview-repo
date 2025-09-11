@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "@jest/globals";
-import { WeatherService } from "../../../__test_data__/WeatherService";
+import { WeatherService } from "../../../__dont_touch__/WeatherService";
 import { DefaultWeatherService } from "./DefaultWeatherService";
 
 describe("WeatherService Unit Tests", () => {

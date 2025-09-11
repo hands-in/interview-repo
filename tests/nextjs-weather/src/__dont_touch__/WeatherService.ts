@@ -1,0 +1,30 @@
+export interface WeatherData {
+	country: string;
+	city: string;
+	temperature: number;
+	description: string;
+	humidity: number;
+	windSpeed: number;
+	icon: string;
+	date: string;
+	weather: Weather;
+}
+
+export interface WeatherQuery {
+	country: string;
+	city?: string;
+	date?: Date;
+}
+
+export enum Weather {
+	SUNNY = "SUNNY",
+	RAINY = "RAINY",
+	CLOUDY = "CLOUDY",
+	HAIL = "HAIL",
+	SNOW = "SNOW",
+}
+
+export interface WeatherService {
+	updateWeather(weather: WeatherData): void;
+	getWeather(query: WeatherQuery): WeatherData[];
+}

@@ -4,7 +4,7 @@
 
 This is a comprehensive full-stack development assessment that evaluates your skills in React, Next.js, TypeScript, API development, and test-driven development. You'll be building a weather application that demonstrates clean code practices, proper error handling, and thorough testing.
 
-**Estimated Time**: 1-2 hours  
+**Estimated Time**: 1-1.5 hours  
 **Difficulty Level**: Mid-Level  
 **Target Roles**: Full-Stack Developer
 

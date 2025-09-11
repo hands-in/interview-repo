@@ -19,7 +19,8 @@
 				"streetsidesoftware.code-spell-checker",
 				"bradlc.vscode-tailwindcss",
 				"mutantdino.resourcemonitor",
-				"biomejs.biome"
+				"biomejs.biome",
+				"firsttris.vscode-jest-runner"
 			]
 		}
 	},

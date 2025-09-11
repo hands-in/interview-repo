@@ -1,7 +1,7 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { Weather, WeatherService } from "../../../__dont_touch__/WeatherService";
 import { DefaultWeatherService } from "./DefaultWeatherService";
-import { WeatherService } from "../../../__test_data__/WeatherService";
-// import { WeatherData, Weather, WeatherService } from "./WeatherService";
+import { z } from "zod";
+import { type NextRequest, NextResponse } from "next/server";
 
 /**
  * GET /api/weather
@@ -19,21 +19,23 @@ import { WeatherService } from "../../../__test_data__/WeatherService";
 export async function GET(request: NextRequest) {
 	const weatherService: WeatherService = new DefaultWeatherService();
 
-	const date = request.nextUrl.searchParams.get("date")
-	const city = request.nextUrl.searchParams.get("city")
-	const country = request.nextUrl.searchParams.get("country")
+	const date = request.nextUrl.searchParams.get("date");
+	const city = request.nextUrl.searchParams.get("city");
+	const country = request.nextUrl.searchParams.get("country");
 
-	if(!country) {
-		return NextResponse.json({ error: "Country is required" }, { status: 400 });
+	const WeatherQuerySchema = z.object({
+		country: z.string(),
+		city: z.string().optional(),
+		date: z.coerce.date().optional(),
+	});
+
+	const parseResult = WeatherQuerySchema.safeParse({ date, city, country });
+
+	if (!parseResult.success) {
+		return NextResponse.json({ error: "Invalid request", details: parseResult.error.issues }, { status: 400 });
 	}
 
-	return NextResponse.json(
-		weatherService.getWeather({
-			country: country,
-			city: city ?? undefined,
-			date: date ? new Date(date) : undefined,
-		}),
-	);
+	return NextResponse.json(weatherService.getWeather(parseResult.data));
 }
 
 /**
@@ -43,8 +45,29 @@ export async function GET(request: NextRequest) {
  * Updates weather for a specific date and location
  */
 export async function POST(_request: NextRequest) {
+	const WeatherDataSchema = z.object({
+		country: z.string(),
+		city: z.string(),
+		temperature: z.number(),
+		description: z.string(),
+		humidity: z.number(),
+		windSpeed: z.number(),
+		icon: z.string(),
+		date: z.string(),
+		weather: z.enum(Weather),
+	});
+
 	const weatherService: WeatherService = new DefaultWeatherService();
 
-	// TODO: Implement the POST endpoint
-	return NextResponse.json({ error: "Not implemented yet" }, { status: 501 });
+	try {
+		const body = await _request.json();
+		const parseResult = WeatherDataSchema.safeParse(body);
+		if (!parseResult.success) {
+			return NextResponse.json({ error: "Invalid request body", details: parseResult.error.issues }, { status: 400 });
+		}
+		weatherService.updateWeather(parseResult.data);
+		return NextResponse.json({ success: true });
+	} catch {
+		return NextResponse.json({ error: "Invalid request body or server error" }, { status: 400 });
+	}
 }
