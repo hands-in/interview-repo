@@ -34,7 +34,7 @@
 				"useLiteralKeys": "off"
 			},
 			"correctness": {
-				"useExhaustiveDependencies": "warn"
+				"useExhaustiveDependencies": "off"
 			},
 			"style": {
 				"useImportType": "off"

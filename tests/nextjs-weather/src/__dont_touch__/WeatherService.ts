@@ -1,11 +1,10 @@
 export interface WeatherData {
+	id: string;
 	country: string;
 	city: string;
 	temperature: number;
-	description: string;
 	humidity: number;
 	windSpeed: number;
-	icon: string;
 	date: string;
 	weather: Weather;
 }

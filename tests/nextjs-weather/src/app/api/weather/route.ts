@@ -1,7 +1,9 @@
 import { Weather, WeatherService } from "../../../__dont_touch__/WeatherService";
-import { DefaultWeatherService } from "./DefaultWeatherService";
+import { DefaultWeatherService } from "../../../examined/DefaultWeatherService";
 import { z } from "zod";
 import { type NextRequest, NextResponse } from "next/server";
+
+const weatherService: WeatherService = new DefaultWeatherService();
 
 /**
  * GET /api/weather
@@ -17,15 +19,13 @@ import { type NextRequest, NextResponse } from "next/server";
  * - If both provided: specific city weather for date
  */
 export async function GET(request: NextRequest) {
-	const weatherService: WeatherService = new DefaultWeatherService();
-
-	const date = request.nextUrl.searchParams.get("date");
-	const city = request.nextUrl.searchParams.get("city");
-	const country = request.nextUrl.searchParams.get("country");
+	const date = request.nextUrl.searchParams.get("date") ?? undefined;
+	const city = request.nextUrl.searchParams.get("city") ?? undefined;
+	const country = request.nextUrl.searchParams.get("country") ?? undefined;
 
 	const WeatherQuerySchema = z.object({
-		country: z.string(),
-		city: z.string().optional(),
+		country: z.string().min(1, "Country is required"),
+		city: z.string().min(1, "City is required").optional(),
 		date: z.coerce.date().optional(),
 	});
 
@@ -44,28 +44,24 @@ export async function GET(request: NextRequest) {
  * Request body: WeatherData object
  * Updates weather for a specific date and location
  */
-export async function POST(_request: NextRequest) {
+export async function POST(request: NextRequest) {
 	const WeatherDataSchema = z.object({
-		country: z.string(),
-		city: z.string(),
+		country: z.string().min(1, "Country is required"),
+		city: z.string().min(1, "City is required"),
 		temperature: z.number(),
-		description: z.string(),
 		humidity: z.number(),
 		windSpeed: z.number(),
-		icon: z.string(),
 		date: z.string(),
 		weather: z.enum(Weather),
 	});
 
-	const weatherService: WeatherService = new DefaultWeatherService();
-
 	try {
-		const body = await _request.json();
+		const body = await request.json();
 		const parseResult = WeatherDataSchema.safeParse(body);
 		if (!parseResult.success) {
 			return NextResponse.json({ error: "Invalid request body", details: parseResult.error.issues }, { status: 400 });
 		}
-		weatherService.updateWeather(parseResult.data);
+		weatherService.updateWeather({ id: crypto.randomUUID(), ...parseResult.data });
 		return NextResponse.json({ success: true });
 	} catch {
 		return NextResponse.json({ error: "Invalid request body or server error" }, { status: 400 });
