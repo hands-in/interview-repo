@@ -8,6 +8,7 @@
     "api:start": "tsx src/server.ts",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:answers": "vitest run answers/charges.test.ts --config /dev/null",
     "typecheck": "tsc --noEmit"
   }
 }
