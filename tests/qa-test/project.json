@@ -1,7 +1,7 @@
 {
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
-	"name": "weather",
+	"name": "payflow",
 	"projectType": "application",
-	"root": "tests/nextjs-weather",
+	"root": "tests/qa-test",
 	"targets": {}
 }
