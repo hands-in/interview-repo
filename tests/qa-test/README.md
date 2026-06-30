@@ -8,7 +8,7 @@ clear write-up beats a sprawling one with no explanation.
 
 ## The API
 
-A miniature payment-orchestration service running on `:3001`.
+A miniature payment-orchestration service with five endpoints.
 
 | Endpoint | Description |
 |---|---|
@@ -30,20 +30,14 @@ A miniature payment-orchestration service running on `:3001`.
 
 ## Setup
 
-Open two terminals in this directory.
-
-**Terminal 1 — API server:**
 ```bash
 npm install
-npm run api
-# API is now listening on http://localhost:3001
-```
-
-**Terminal 2 — test runner:**
-```bash
-npm test          # run once
+npm test            # run the suite once
 npm run test:watch  # re-run on save (recommended while writing)
 ```
+
+The test suite boots the API in-process — no separate server needed.
+If you want to poke the API by hand, `npm run api` starts it on `:3001`.
 
 Your starting point is `tests/api/charges.test.ts`. It has one passing test.
 Extend it — add files if you like.
