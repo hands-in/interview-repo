@@ -30,17 +30,37 @@ A miniature payment-orchestration service with five endpoints.
 
 ## Setup
 
+Pick whichever test framework you're more comfortable with — **you only need
+one of these**, not both:
+
+**Jest / Vitest** — Vitest's `describe`/`it`/`expect`/`beforeEach` API is a
+drop-in match for Jest, so if you know Jest this will feel identical.
+
 ```bash
 npm install
 npm test            # run the suite once
 npm run test:watch  # re-run on save (recommended while writing)
 ```
 
-The test suite boots the API in-process — no separate server needed.
-If you want to poke the API by hand, `npm run api` starts it on `:3001`.
+Your starting point is `tests/api/charges.test.ts`. It has one passing test
+and a set of `it.todo(...)` placeholders to fill in.
 
-Your starting point is `tests/api/charges.test.ts`. It has one passing test.
-Extend it — add files if you like.
+**Playwright** — same scenarios, same helpers, written with Playwright Test
+syntax instead. No browser involved; it's used purely as the test runner.
+
+```bash
+npm install
+npm run test:playwright   # run the suite once
+```
+
+Your starting point is `tests/playwright/charges.spec.ts`. It has one passing
+test and a set of `test.fixme(...)` placeholders to fill in.
+
+---
+
+Either way, the test suite boots the API in-process — no separate server
+needed. If you want to poke the API by hand, `npm run api` starts it on
+`:3001`.
 
 ---
 
@@ -97,7 +117,9 @@ entry to `BUGS.md`.
 
 ## What to hand back
 
-1. Your tests (`tests/api/` — extend or add files freely).
+1. Your tests — extend or add files freely within whichever suite you chose
+   (`tests/api/` for Jest/Vitest, `tests/playwright/` for Playwright). You
+   don't need to touch the suite you didn't use.
 2. **`BUGS.md`** — every bug you found, ordered by severity.
 3. **`NOTES.md`** — what you'd test next with more time, any assumptions you
    made, and how you'd run this suite in CI.

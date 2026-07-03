@@ -9,7 +9,7 @@
 
 import { describe, it, expect, beforeEach } from "vitest";
 import request from "supertest";
-import { createApp } from "../src/app.js";
+import { createApp } from "../../src/app.js";
 
 const app = createApp();
 
