@@ -13,8 +13,14 @@ it. This guide tells you what to say, when to nudge, and what to listen for.
 
 ## Before the session (5 min, on your own)
 
-- Have the repo running: `npm install && npm test`. Confirm the starter test
-  passes so you're not debugging the harness on the candidate's time.
+- Have the repo running: `npm install && npm test` (Jest/Vitest suite) and
+  `npm run test:playwright` (Playwright suite). Confirm the starter test
+  passes in whichever one the candidate will use, so you're not debugging the
+  harness on the candidate's time.
+- Ask the candidate up front whether they'd rather use the Jest/Vitest suite
+  (`tests/api/charges.test.ts`) or the Playwright suite
+  (`tests/playwright/charges.spec.ts`). Same scenarios, same helpers, same
+  bugs to find in either — the choice only affects test syntax, not signal.
 - Decide the format: screen-share with the candidate driving is best. If they
   prefer you to drive while they direct, that's fine — narrate as you type.
 - Re-read the two planted races in `store.ts` (createCharge, refund) so you can
@@ -150,8 +156,8 @@ clean assertions, and the quality of the discussion outweigh raw coverage.
 - **Don't quiz.** This is pairing, not a viva. If they're moving, stay quiet.
 - **Don't reveal the bug early to save time.** The hint ladder exists so the
   *level of help they needed* stays interpretable.
-- **Don't penalise unfamiliarity with the tooling.** Vitest/supertest specifics
-  are Googleable — answer those freely; they cost you no signal.
+- **Don't penalise unfamiliarity with the tooling.** Vitest/Playwright/supertest
+  specifics are Googleable — answer those freely; they cost you no signal.
 - **Don't let a stuck candidate end on failure.** Use Level 4. How someone
   collaborates when rescued is itself useful signal.
 

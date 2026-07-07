@@ -9,6 +9,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:answers": "vitest run answers/charges.test.ts --config /dev/null",
+    "test:playwright": "playwright test",
     "typecheck": "tsc --noEmit"
   }
 }
